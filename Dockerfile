@@ -5,8 +5,9 @@ COPY ./src .
 RUN javac ./main/Main.java
 
 FROM openjdk:11-jre
-COPY --from=BUILDER /app /app
 
 WORKDIR /app
+COPY --from=BUILDER /app .
+
 EXPOSE 9999
 CMD ["java", "main.Main"]
